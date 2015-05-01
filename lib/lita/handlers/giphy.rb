@@ -8,7 +8,7 @@ module Lita
         "giphy QUERY" => "Grabs a gif tagged with QUERY."
       })
 
-      config :api_key, require: true, type: String
+      config :api_key, required: true, type: String
 
       def giphy(response)
         return unless validate(response)

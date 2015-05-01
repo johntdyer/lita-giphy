@@ -1,9 +1,9 @@
 require 'spec_helper'
 
 describe Lita::Handlers::Giphy, lita_handler: true do
-  it { routes_command("giphy swanson dance").to :giphy }
-  it { routes_command("gif swanson dance").to :giphy }
-  it { routes_command("animate swanson dance").to :giphy }
+  it { is_expected.to route_command("giphy swanson dance").to(:giphy) }
+  it { is_expected.to route_command("gif swanson dance").to(:giphy) }
+  it { is_expected.to route_command("animate swanson dance").to(:giphy) }
 
   it "sets the Giphy API key to nil by default" do
     expect(Lita.config.handlers.giphy.api_key).to be_nil
@@ -28,9 +28,9 @@ describe Lita::Handlers::Giphy, lita_handler: true do
     "bitly_gif_url":"http:\/\/gph.is\/18Abg9K", "bitly_fullscreen_url":"http:\/\/gph.is\/18AbeyG", "bitly_tiled_url":"http:\/\/gph.is\/17vT1VT", "embed_url":"http:\/\/giphy.com\/embed\/11nMit55uRGIuc", "images":
       {
         "fixed_height":
-          {"url":"http:\/\/media0.giphy.com\/media\/11nMit55uRGIuc\/200.gif", "width":"355", "height":"200"}, 
+          {"url":"http:\/\/media0.giphy.com\/media\/11nMit55uRGIuc\/200.gif", "width":"355", "height":"200"},
         "fixed_height_still":
-          {"url":"http:\/\/media1.giphy.com\/media\/11nMit55uRGIuc\/200_s.gif","width":"355","height":"200"}, 
+          {"url":"http:\/\/media1.giphy.com\/media\/11nMit55uRGIuc\/200_s.gif","width":"355","height":"200"},
         "fixed_height_downsampled":
           {"url":"http:\/\/media0.giphy.com\/media\/11nMit55uRGIuc\/200_d.gif","width":"355","height":"200"},
         "fixed_width":
@@ -39,7 +39,7 @@ describe Lita::Handlers::Giphy, lita_handler: true do
           {"url":"http:\/\/media2.giphy.com\/media\/11nMit55uRGIuc\/200w_s.gif","width":"200","height":"113"},
         "fixed_width_downsampled":
           {"url":"http:\/\/media0.giphy.com\/media\/11nMit55uRGIuc\/200w_d.gif","width":"200","height":"113"},
-        "original": 
+        "original":
           {"url":"http:\/\/media3.giphy.com\/media\/11nMit55uRGIuc\/giphy.gif", "width":"500", "height":"282", "size":"507637","frames":"20"}
       }
     }
@@ -51,7 +51,7 @@ describe Lita::Handlers::Giphy, lita_handler: true do
   }
           BODY
         end
-        
+
         let(:response) { double("Faraday::Response", status: 200, body: body) }
 
         before do
